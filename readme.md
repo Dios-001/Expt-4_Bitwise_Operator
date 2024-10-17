@@ -1,41 +1,53 @@
-# C++ Bitwise Operations Programs
+# Bitwise Operators in C++
 
-This repository contains C++ programs for performing bitwise and shifting operations and resetting a specific bit. These programs demonstrate basic bit manipulation techniques.
+This repository contains examples and explanations of **bitwise operators** implemented in C++.
 
-## Table of Contents
+## What are Bitwise Operators?
 
-1. [Introduction](#introduction)
-2. [Program 1: Perform Bitwise and Shifting Operations](#program-1-perform-bitwise-and-shifting-operations)
-   - [Logic Explanation](#logic-explanation-1)
-3. [Program 2: Reset a Specific Bit](#program-2-reset-a-specific-bit)
-   - [Logic Explanation](#logic-explanation-2)
+Bitwise operators perform operations directly on the **binary representation** of integers. They are useful in low-level programming tasks like optimization, cryptography, and networking.
 
-## Introduction
+---
 
-Bitwise operations are fundamental in programming, especially for low-level data manipulation and performance optimization. Shifting operations are also essential for tasks like encoding, compression, and mathematical calculations. This repository provides two programs to illustrate these concepts.
+## Common Bitwise Operators
 
-## Program 1: Perform Bitwise and Shifting Operations
+| Operator   | Symbol | Description                                 | Example (A = 5, B = 3)             |
+|------------|--------|---------------------------------------------|------------------------------------|
+| AND        | `&`    | Sets each bit to 1 if both bits are 1       | `A & B = 1` (0101 & 0011 = 0001)  |
+| OR         | `|`    | Sets each bit to 1 if at least one bit is 1 | `A | B = 7` (0101 | 0011 = 0111)  |
+| XOR        | `^`    | Sets each bit to 1 if only one bit is 1     | `A ^ B = 6` (0101 ^ 0011 = 0110)  |
+| NOT        | `~`    | Inverts all the bits                        | `~A = -6` (Two's complement: 1010 + 1 = 1011) |
+| Left Shift | `<<`   | Shifts bits to the left, filling with 0     | `A << 1 = 10` (0101 << 1 = 1010)  |
+| Right Shift| `>>`   | Shifts bits to the right, discarding bits   | `A >> 1 = 2` (0101 >> 1 = 0010)   |
 
-### Logic Explanation
+---
 
-This program demonstrates how to perform basic bitwise and shifting operations. The key operations include:
+## Algorithm
 
-1. **Bitwise AND**: Performs a logical AND operation on each bit of two numbers.
-2. **Bitwise OR**: Performs a logical OR operation on each bit of two numbers.
-3. **Bitwise XOR**: Performs a logical XOR operation on each bit of two numbers.
-4. **Bitwise NOT**: Inverts all bits of a number.
-5. **Left Shift**: Shifts the bits of a number to the left by a specified number of positions.
-6. **Right Shift**: Shifts the bits of a number to the right by a specified number of positions.
+Here is the **pseudocode** for each bitwise operation:
 
-The program typically takes two numbers as input and applies these operations, displaying the results.
 
-## Program 2: Reset a Specific Bit
+```pseudo
 
-### Logic Explanation
+for i = 0 to number_of_bits:
+    if (bit_A[i] == 1) AND (bit_B[i] == 1):
+        result[i] = 1
+    else:
+        result[i] = 0
+for i = 0 to number_of_bits:
+    if (bit_A[i] == 1) OR (bit_B[i] == 1):
+        result[i] = 1
+    else:
+        result[i] = 0
+for i = 0 to number_of_bits:
+    if (bit_A[i] != bit_B[i]):
+        result[i] = 1
+    else:
+        result[i] = 0
+for i = 0 to number_of_bits:
+    result[i] = NOT(bit_A[i])
+shift_bits_left(A, shift_count):
+    result = A * (2 ^ shift_count)
 
-This program resets (clears) a specific bit in a number. The steps are:
 
-1. **User Input**: The user inputs a number and the position of the bit to be reset.
-2. **Bit Masking**: A bitmask is created to target the specific bit. The bit at the given position is cleared using a bitwise AND operation with the negated bitmask.
-3. **Output Result**: The program displays the number after the specified bit has been reset.
-
+shift_bits_right(A, shift_count):
+    result = A / (2 ^ shift_count)
